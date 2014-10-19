@@ -30,24 +30,34 @@
     return objc_getAssociatedObject(self, sel_getName(@selector(apperanceDidChanged)));
 }
 
-- (void)setAppearanceWantsUpdateAlways:(BOOL)appearanceWantsUpdateAlways
+- (void)setAppearanceState:(unsigned char)appearanceState
 {
-  objc_setAssociatedObject(self, sel_getName(@selector(appearanceWantsUpdateAlways)), [NSNumber numberWithBool:appearanceWantsUpdateAlways], OBJC_ASSOCIATION_ASSIGN);
+  objc_setAssociatedObject(self, sel_getName(@selector(appearanceState)), [NSNumber numberWithUnsignedChar:appearanceState], OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (BOOL)appearanceWantsUpdateAlways
+- (unsigned char)appearanceState
 {
-  return [objc_getAssociatedObject(self, sel_getName(@selector(appearanceWantsUpdateAlways))) boolValue];
+  return [objc_getAssociatedObject(self, sel_getName(@selector(appearanceState))) unsignedCharValue];
 }
 
-- (void)setApperanceKey:(id)apperanceKey
+- (void)setAppearance:(id)appearance
 {
-  objc_setAssociatedObject(self, sel_getName(@selector(apperanceKey)), apperanceKey, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  objc_setAssociatedObject(self, sel_getName(@selector(appearance)), appearance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)apperanceKey
+- (id)appearance
 {
-  return objc_getAssociatedObject(self, sel_getName(@selector(apperanceKey)));
+  return objc_getAssociatedObject(self, sel_getName(@selector(appearance)));
+}
+
+- (void)setAppearanceConfigKeyPath:(NSString *)appearanceConfigKeyPath
+{
+  objc_setAssociatedObject(self, sel_getName(@selector(appearanceConfigKeyPath)), appearanceConfigKeyPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)appearanceConfigKeyPath
+{
+  return objc_getAssociatedObject(self, sel_getName(@selector(appearanceConfigKeyPath)));
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Appearance.h"
 
 @interface T : UIView
 
@@ -31,17 +32,21 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
   
-  T *t = [[T alloc] init];
+  appearance_wants_update(self);
   
-  t.alpha = 0;
-  
-  [self.view addSubview:t];
+  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)timeout
 {
-  [super viewWillAppear:animated];
+  appearance_update(nil);
 }
+
+IMP_APPEARANCE_WILL_UPDATE_BEGIN
+IMP_APPEARANCE_WILL_UPDATE_END
+
+IMP_APPEARANCE_DID_UPDATE_BEGIN
+IMP_APPEARANCE_DID_UPDATE_END
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];

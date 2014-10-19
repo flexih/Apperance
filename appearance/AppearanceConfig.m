@@ -9,4 +9,9 @@
 
 @implementation AppearanceConfig
 
+- (void)config:(UIResponder *)responder
+{
+  
+}
+
 @end

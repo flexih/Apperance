@@ -6,7 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIResponder+Appearance.h"
 
 @interface AppearanceConfig : NSObject
+
+@property (nonatomic, strong, readonly) NSString *appearance;
+
+- (void)config:(UIResponder *)responder;
 
 @end

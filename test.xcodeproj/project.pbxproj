@@ -132,12 +132,12 @@
 		71CE491C19F0079A0017541A /* appearance */ = {
 			isa = PBXGroup;
 			children = (
-				71CE491D19F0079A0017541A /* Appearance.h */,
-				71CE491E19F0079A0017541A /* Appearance.m */,
-				71CE491F19F0079A0017541A /* AppearanceConfig.h */,
-				71CE492019F0079A0017541A /* AppearanceConfig.m */,
 				71CE492119F0079A0017541A /* UIResponder+Appearance.h */,
 				71CE492219F0079A0017541A /* UIResponder+Appearance.m */,
+				71CE491F19F0079A0017541A /* AppearanceConfig.h */,
+				71CE492019F0079A0017541A /* AppearanceConfig.m */,
+				71CE491D19F0079A0017541A /* Appearance.h */,
+				71CE491E19F0079A0017541A /* Appearance.m */,
 			);
 			path = appearance;
 			sourceTree = SOURCE_ROOT;

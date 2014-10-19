@@ -8,30 +8,46 @@
 #import "Appearance.h"
 
 static NSPointerArray *appearance_list;
-static id appearance_key;
+static AppearanceConfig *appearance_config;
 
-static void appearance_config(UIResponder *responder);
+static void appearance_setup_config(UIResponder *responder);
+static inline BOOL appearance_is_valid(UIResponder *responder);
 static inline BOOL appearance_should_update(UIResponder *responder);
 
 void appearance_initialize(void)
 {
   appearance_list = [NSPointerArray weakObjectsPointerArray];
+  appearance_config = [[AppearanceConfig alloc] init];
   //initialize
   //read ini
 }
 
 void appearance_destory(void)
 {
+  appearance_list = nil;
+  appearance_config = nil;
   //deinitialize
 }
 
 void appearance_update(id appearanceKey)
 {
-  for (long i = appearance_list.count - 1; i > -1; i++) {
+  if ([appearanceKey isEqual:appearance_config.appearance]) {
+    return;
+  }
+  
+  for (long i = appearance_list.count - 1; i > -1; i--) {
     UIResponder *responder = [appearance_list pointerAtIndex:i];
     
+    if (responder.apperanceWillChange != nil) {
+      responder.apperanceWillChange(appearance_config.appearance);
+    }
+    
     if (appearance_should_update(responder)) {
-      appearance_config(responder);
+      appearance_setup_config(responder);
+    }
+    
+    if (responder.apperanceDidChanged != nil) {
+      responder.apperanceDidChanged(appearance_config.appearance);
     }
   }
 }
@@ -39,28 +55,36 @@ void appearance_update(id appearanceKey)
 void appearance_wants_update(UIResponder *responder)
 {
   [appearance_list addPointer:(__bridge void *)responder];
+  [responder setValue:[NSNumber numberWithUnsignedChar:kAppearanceStateWantsUpdate]
+               forKey:NSStringFromSelector(@selector(appearanceState))];
+}
+
+void appearance_wants_update_always(UIResponder *responder)
+{
+  [appearance_list addPointer:(__bridge void *)responder];
+  [responder setValue:[NSNumber numberWithUnsignedChar:kAppearanceStateWantsUpdateAlways]
+               forKey:NSStringFromSelector(@selector(appearanceState))];
 }
 
 void appearance_will_update(UIResponder *responder)
 {
-  if (![responder.apperanceKey isEqual:appearance_key]) {
-    appearance_config(responder);
+  if (appearance_is_valid(responder)) {
+    appearance_setup_config(responder);
     
     if (responder.apperanceWillChange != nil) {
-      responder.apperanceWillChange(appearance_key);
+      responder.apperanceWillChange(appearance_config.appearance);
     }
   }
 }
 
 void appearance_did_update(UIResponder *responder)
 {
-  if (![responder.apperanceKey isEqual:appearance_key]) {
-    [responder setValue:appearance_key forKey:NSStringFromSelector(@selector(apperanceKey))];
-    
-    appearance_config(responder);
+  if (appearance_is_valid(responder)) {
+    id oldAppearanceKey = responder.appearance;
+    [responder setValue:appearance_config.appearance forKey:NSStringFromSelector(@selector(appearance))];
     
     if (responder.apperanceDidChanged != nil) {
-      responder.apperanceDidChanged();
+      responder.apperanceDidChanged(oldAppearanceKey);
     }
   }
 }
@@ -79,15 +103,24 @@ void appearance_view_did_update(UIResponder *responder)
   }
 }
 
-static void appearance_config(UIResponder *responder)
+static BOOL appearance_is_valid(UIResponder *responder)
 {
-  
+  return appearance_config.appearance != nil &&
+         responder.appearanceState > 0 &&
+         ![responder.appearance isEqual:appearance_config.appearance];
+}
+
+static void appearance_setup_config(UIResponder *responder)
+{
+  if (responder.appearanceConfigKeyPath) {
+    [appearance_config config:responder];
+  }
 }
 
 static BOOL appearance_should_update(UIResponder *responder)
 {
-  if (responder.appearanceWantsUpdateAlways) {
-    return responder.appearanceWantsUpdateAlways;
+  if (responder.appearanceState == kAppearanceStateWantsUpdateAlways) {
+    return YES;
   }
   
   if ([responder isKindOfClass:[UIViewController class]]) {
