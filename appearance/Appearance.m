@@ -112,7 +112,7 @@ static BOOL appearance_is_valid(UIResponder *responder)
 
 static void appearance_setup_config(UIResponder *responder)
 {
-  if (responder.appearanceConfigKeyPath) {
+  if (responder.appearanceConfigKeyPath != nil) {
     [appearance_config config:responder];
   }
 }
