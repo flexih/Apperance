@@ -7,6 +7,12 @@
 
 #import "AppearanceConfig.h"
 
+@interface AppearanceConfig()
+
+@property (nonatomic, strong) NSMutableDictionary *configuration;
+
+@end
+
 @implementation AppearanceConfig
 
 - (void)config:(UIResponder *)responder
