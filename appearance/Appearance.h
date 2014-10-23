@@ -27,22 +27,6 @@
 #define IMP_APPEARANCE_DID_UPDATE_END             \
 }
 
-/**UIViewController
-- (void)viewWillAppear:(BOOL)animated
-{
-  [super viewWillAppear:animated];
-  
-  appearance_will_update(self);
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
-  
-  appearance_did_update(self);
-}
-*/
-
 #define IMP_APPEARANCE_VIEW_WILL_UPDATE_BEGIN      \
 - (void)willMoveToWindow:(UIWindow *)newWindow     \
 {                                                  \
@@ -58,19 +42,6 @@
 
 #define IMP_APPEARANCE_VIEW_DID_UPDATE_END         \
 }
-
-
-/**UIView,UIWindow
-- (void)willMoveToWindow:(UIWindow *)newWindow
-{
-  appearance_view_will_update(self, newWindow);
-}
-
-- (void)didMoveToWindow
-{
-  appearance_view_did_update(self);
-}
-*/
 
 void appearance_initialize(void);
 void appearance_destory(void);

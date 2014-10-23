@@ -20,12 +20,12 @@
     return objc_getAssociatedObject(self, sel_getName(@selector(apperanceWillChange)));
 }
 
-- (void)setApperanceDidChanged:(void (^)(void))apperanceDidChanged
+- (void)setApperanceDidChanged:(void (^)(id))apperanceDidChanged
 {
     objc_setAssociatedObject(self, sel_getName(@selector(apperanceDidChanged)), apperanceDidChanged, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void (^)(void))apperanceDidChanged
+- (void (^)(id))apperanceDidChanged
 {
     return objc_getAssociatedObject(self, sel_getName(@selector(apperanceDidChanged)));
 }
