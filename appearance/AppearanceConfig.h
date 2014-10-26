@@ -12,6 +12,12 @@
 
 @property (nonatomic, strong, readonly) NSString *appearance;
 
-- (void)config:(UIResponder *)responder;
++ (instancetype)configWithPath:(NSString *)path;
+
+- (instancetype)initWithPath:(NSString *)path;
+- (instancetype)initWithData:(NSData *)jsonData;
+- (instancetype)initWithString:(NSString *)string;
+
+- (void)configResponder:(UIResponder *)responder;
 
 @end

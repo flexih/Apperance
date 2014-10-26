@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "AppearanceImageView.h"
+#import "AppearanceView.h"
 
 @interface ViewController ()
 
@@ -18,13 +19,21 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
   
-  AppearanceImageView *aview = [[AppearanceImageView alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
+  AppearanceView *aview = [[AppearanceView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+  
+  aview.appearanceConfigKeyPath = @"key1";
   
   [self.view addSubview:aview];
   
-  aview.appearanceConfigKeyPath = @"key2";
-  
   appearance_wants_update(aview);
+  
+  AppearanceImageView *aiview = [[AppearanceImageView alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
+  
+  [self.view addSubview:aiview];
+  
+  aiview.appearanceConfigKeyPath = @"key2";
+  
+  appearance_wants_update(aiview);
   
 //  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
 }

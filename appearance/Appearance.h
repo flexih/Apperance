@@ -56,8 +56,8 @@
 - (void)didMoveToWindow NS_REQUIRES_SUPER;
 
 void appearance_initialize(void);
+void appearance_update(AppearanceConfig *apperanceConfig);
 void appearance_destory(void);
-void appearance_update(id appearanceKey);
 
 void appearance_wants_update(UIResponder *responder);
 void appearance_wants_update_always(UIResponder *responder);

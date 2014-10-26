@@ -22,23 +22,21 @@ BOOL appearance_should_update(UIResponder *responder);
 void appearance_initialize(void)
 {
   appearance_list = [NSPointerArray weakObjectsPointerArray];
-  appearance_config = [[AppearanceConfig alloc] init];
-  //initialize
-  //read ini
 }
 
 void appearance_destory(void)
 {
   appearance_list = nil;
   appearance_config = nil;
-  //deinitialize
 }
 
-void appearance_update(id appearanceKey)
+void appearance_update(AppearanceConfig *apperanceConfig)
 {
-  if ([appearanceKey isEqual:appearance_config.appearance]) {
+  if ([apperanceConfig.appearance isEqual:appearance_config.appearance]) {
     return;
   }
+
+  appearance_config = apperanceConfig;  
   
   for (long i = appearance_list.count - 1; i > -1; i--) {
     UIResponder *responder = [appearance_list pointerAtIndex:i];
@@ -118,7 +116,7 @@ static BOOL appearance_is_valid(UIResponder *responder)
 static void appearance_setup_config(UIResponder *responder)
 {
   if (responder.appearanceConfigKeyPath != nil) {
-    [appearance_config config:responder];
+    [appearance_config configResponder:responder];
   }
 }
 

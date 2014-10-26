@@ -19,6 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
   appearance_initialize();
+  appearance_update([AppearanceConfig configWithPath:[[NSBundle mainBundle] pathForResource:@"them1.json" ofType:nil]]);
   return YES;
 }
 
