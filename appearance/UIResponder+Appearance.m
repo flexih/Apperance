@@ -10,12 +10,12 @@
 
 @implementation UIResponder (Appearance)
 
-- (void)setApperanceWillChange:(BOOL (^)(id))apperanceWillChange
+- (void)setApperanceWillChange:(void (^)(id))apperanceWillChange
 {
     objc_setAssociatedObject(self, sel_getName(@selector(apperanceWillChange)), apperanceWillChange, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (BOOL (^)(id))apperanceWillChange
+- (void (^)(id))apperanceWillChange
 {
     return objc_getAssociatedObject(self, sel_getName(@selector(apperanceWillChange)));
 }

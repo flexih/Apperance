@@ -10,9 +10,14 @@
 static NSPointerArray *appearance_list;
 static AppearanceConfig *appearance_config;
 
-static void appearance_setup_config(UIResponder *responder);
-static inline BOOL appearance_is_valid(UIResponder *responder);
-static inline BOOL appearance_should_update(UIResponder *responder);
+static
+void appearance_setup_config(UIResponder *responder);
+
+static inline
+BOOL appearance_is_valid(UIResponder *responder);
+
+static inline
+BOOL appearance_should_update(UIResponder *responder);
 
 void appearance_initialize(void)
 {

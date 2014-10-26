@@ -1,26 +1,12 @@
 //
 //  ViewController.m
-//  test
 //
 //  Created by flexih on 10/14/14.
 //  Copyright (c) 2014 flexih. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "Appearance.h"
-
-@interface T : UIView
-
-@end
-
-@implementation T
-
-- (void)willMoveToWindow:(UIWindow *)newWindow
-{
-  [super willMoveToWindow:newWindow];
-}
-
-@end
+#import "AppearanceImageView.h"
 
 @interface ViewController ()
 
@@ -32,9 +18,15 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view, typically from a nib.
   
-  appearance_wants_update(self);
+  AppearanceImageView *aview = [[AppearanceImageView alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
   
-  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+  [self.view addSubview:aview];
+  
+  aview.appearanceConfigKeyPath = @"key2";
+  
+  appearance_wants_update(aview);
+  
+//  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
 }
 
 - (void)timeout

@@ -6,6 +6,8 @@
 //
 
 #import "AppearanceConfig.h"
+#import "UIColor+Appearance.h"
+#import "UIImage+Appearance.h"
 
 /*
  *{"key1":[["setBackgroundColor1:color2", [{"v":"color", "c":"UIColor"}, {"v":"color"}]],]}
@@ -23,7 +25,9 @@
 {
   self = [super init];
   if (self != nil) {
-    _configuration = @{@"appearance":@"Theme1"
+    _configuration = @{@"appearance":@"Theme1",
+                       @"key1":@[@[@"setBackgroundColor:",@[@{@"v":@"255,100,255,0.8", @"c":@"UIColor"}]],@[@"setTag:",@[@{@"v":@(10)}]]],
+                       @"key2":@[@[@"setImage:", @[@{@"v":@"bundle://[areas.bundle]/oreo.jpg", @"c":@"UIImage"}]]]
                        }.mutableCopy;
   }
   return self;
@@ -46,8 +50,9 @@
   
   [invocation setTarget:responder];
   [invocation setSelector:selector];
+  [invocation retainArguments];
   
-  NSAssert(parameters.count == [signature numberOfArguments], @"parameters count not equal");
+  NSAssert(parameters.count + 2 == [signature numberOfArguments], @"parameters count not equal");
   
   for (int j = 2; j < [signature numberOfArguments]; j++) {
     const char *type = [signature getArgumentTypeAtIndex:j];
@@ -120,21 +125,9 @@
       case '@': {
         Class c = NSClassFromString(className);
         if (c == [UIColor class]) {
-          if ([value isKindOfClass:[NSString class]]) {
-            //grayColor
-            //rr,gg,bb,aa
-            SEL classSelector = NSSelectorFromString(value);
-
-            NSAssert([c respondsToSelector:classSelector], @"UIColor dose not respond to %s", sel_getName(classSelector));
-            
-            obj = [c performSelector:classSelector];
-            
-          } else if ([value isKindOfClass:[NSNumber class]]) {
-            //hex color
-          }
-          
+          obj = [UIColor colorWithObject:value];
         } else if (c == [UIImage class]) {
-          //value is path
+          obj = [UIImage imageWithText:value];
         }
         pvalue = &obj;
         break;

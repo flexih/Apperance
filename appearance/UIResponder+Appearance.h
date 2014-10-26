@@ -14,10 +14,10 @@ typedef NS_ENUM(NSInteger, AppearanceState) {
 
 @interface UIResponder (Appearance)
 
-@property (nonatomic, strong, readonly) id appearance;
-@property (nonatomic, readonly) unsigned char appearanceState;
 @property (nonatomic, strong) NSString *appearanceConfigKeyPath;
-@property (nonatomic, copy) BOOL (^apperanceWillChange)(id newAppearanceKey);
+@property (nonatomic, copy) void (^apperanceWillChange)(id newAppearanceKey);
 @property (nonatomic, copy) void (^apperanceDidChanged)(id oldAppearanceKey);
+@property (nonatomic, readonly) unsigned char appearanceState;
+@property (nonatomic, strong, readonly) id appearance;
 
 @end
