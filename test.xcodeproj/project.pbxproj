@@ -17,9 +17,10 @@
 		71CE492319F0079A0017541A /* Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE491E19F0079A0017541A /* Appearance.m */; };
 		71CE492419F0079A0017541A /* AppearanceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE492019F0079A0017541A /* AppearanceConfig.m */; };
 		71CE492519F0079A0017541A /* UIResponder+Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CE492219F0079A0017541A /* UIResponder+Appearance.m */; };
-		71D05CE119FCBD3E00DA31C9 /* oreo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D05CE019FCBD3E00DA31C9 /* oreo.jpg */; };
 		71D05CE319FCD14600DA31C9 /* areas.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71D05CE219FCD14600DA31C9 /* areas.bundle */; };
 		71D05CE519FD1CFA00DA31C9 /* them1.json in Resources */ = {isa = PBXBuildFile; fileRef = 71D05CE419FD1CFA00DA31C9 /* them1.json */; };
+		71D05CE719FD1F6300DA31C9 /* oreo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 71D05CE619FD1F6300DA31C9 /* oreo.jpg */; };
+		71D05CEC19FD209F00DA31C9 /* AppearanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D05CEB19FD209F00DA31C9 /* AppearanceViewController.m */; };
 		71D8E95419FA76E20000D43C /* UIColor+Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E95319FA76E20000D43C /* UIColor+Appearance.m */; };
 		71D8E95719FA76F00000D43C /* UIImage+Appearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E95619FA76F00000D43C /* UIImage+Appearance.m */; };
 		71D8E95D19FA84150000D43C /* AppearanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E95C19FA84150000D43C /* AppearanceView.m */; };
@@ -58,9 +59,11 @@
 		71CE492019F0079A0017541A /* AppearanceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceConfig.m; sourceTree = "<group>"; };
 		71CE492119F0079A0017541A /* UIResponder+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Appearance.h"; sourceTree = "<group>"; };
 		71CE492219F0079A0017541A /* UIResponder+Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Appearance.m"; sourceTree = "<group>"; };
-		71D05CE019FCBD3E00DA31C9 /* oreo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oreo.jpg; path = ../appearance/oreo.jpg; sourceTree = "<group>"; };
 		71D05CE219FCD14600DA31C9 /* areas.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = areas.bundle; sourceTree = "<group>"; };
 		71D05CE419FD1CFA00DA31C9 /* them1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = them1.json; sourceTree = "<group>"; };
+		71D05CE619FD1F6300DA31C9 /* oreo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oreo.jpg; sourceTree = "<group>"; };
+		71D05CEA19FD209F00DA31C9 /* AppearanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppearanceViewController.h; sourceTree = "<group>"; };
+		71D05CEB19FD209F00DA31C9 /* AppearanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceViewController.m; sourceTree = "<group>"; };
 		71D8E95219FA76E20000D43C /* UIColor+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Appearance.h"; sourceTree = "<group>"; };
 		71D8E95319FA76E20000D43C /* UIColor+Appearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Appearance.m"; sourceTree = "<group>"; };
 		71D8E95519FA76F00000D43C /* UIImage+Appearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Appearance.h"; sourceTree = "<group>"; };
@@ -131,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				71D05CE419FD1CFA00DA31C9 /* them1.json */,
+				71D05CE619FD1F6300DA31C9 /* oreo.jpg */,
 				71D05CE219FCD14600DA31C9 /* areas.bundle */,
-				71D05CE019FCBD3E00DA31C9 /* oreo.jpg */,
 				71CDD5CA19ED5668009C683C /* Info.plist */,
 				71CDD5CB19ED5668009C683C /* main.m */,
 			);
@@ -159,21 +162,39 @@
 		71CE491C19F0079A0017541A /* appearance */ = {
 			isa = PBXGroup;
 			children = (
+				71D05CE919FD208900DA31C9 /* AppearanceVC */,
 				71D8E95A19FA83F10000D43C /* AppearanceUI */,
+				71D05CE819FD200100DA31C9 /* AppearanceConfig */,
 				71D8E95119FA76A50000D43C /* AppearanceCategory */,
-				71CE491F19F0079A0017541A /* AppearanceConfig.h */,
-				71CE492019F0079A0017541A /* AppearanceConfig.m */,
-				71CE492119F0079A0017541A /* UIResponder+Appearance.h */,
-				71CE492219F0079A0017541A /* UIResponder+Appearance.m */,
 				71CE491D19F0079A0017541A /* Appearance.h */,
 				71CE491E19F0079A0017541A /* Appearance.m */,
 			);
 			path = appearance;
 			sourceTree = SOURCE_ROOT;
 		};
+		71D05CE819FD200100DA31C9 /* AppearanceConfig */ = {
+			isa = PBXGroup;
+			children = (
+				71CE491F19F0079A0017541A /* AppearanceConfig.h */,
+				71CE492019F0079A0017541A /* AppearanceConfig.m */,
+			);
+			name = AppearanceConfig;
+			sourceTree = "<group>";
+		};
+		71D05CE919FD208900DA31C9 /* AppearanceVC */ = {
+			isa = PBXGroup;
+			children = (
+				71D05CEA19FD209F00DA31C9 /* AppearanceViewController.h */,
+				71D05CEB19FD209F00DA31C9 /* AppearanceViewController.m */,
+			);
+			name = AppearanceVC;
+			sourceTree = "<group>";
+		};
 		71D8E95119FA76A50000D43C /* AppearanceCategory */ = {
 			isa = PBXGroup;
 			children = (
+				71CE492119F0079A0017541A /* UIResponder+Appearance.h */,
+				71CE492219F0079A0017541A /* UIResponder+Appearance.m */,
 				71D8E95219FA76E20000D43C /* UIColor+Appearance.h */,
 				71D8E95319FA76E20000D43C /* UIColor+Appearance.m */,
 				71D8E95519FA76F00000D43C /* UIImage+Appearance.h */,
@@ -277,11 +298,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71D05CE119FCBD3E00DA31C9 /* oreo.jpg in Resources */,
 				71CDD5D519ED5668009C683C /* Main.storyboard in Resources */,
 				71CDD5DA19ED5668009C683C /* LaunchScreen.xib in Resources */,
 				71D05CE319FCD14600DA31C9 /* areas.bundle in Resources */,
 				71CDD5D719ED5668009C683C /* Images.xcassets in Resources */,
+				71D05CE719FD1F6300DA31C9 /* oreo.jpg in Resources */,
 				71D05CE519FD1CFA00DA31C9 /* them1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +329,7 @@
 				71CDD5CC19ED5668009C683C /* main.m in Sources */,
 				71D8E96419FA8F890000D43C /* AppearanceImageView.m in Sources */,
 				71D8E96119FA8F530000D43C /* AppearanceLabel.m in Sources */,
+				71D05CEC19FD209F00DA31C9 /* AppearanceViewController.m in Sources */,
 				71CE492419F0079A0017541A /* AppearanceConfig.m in Sources */,
 				71D8E96719FA8FC80000D43C /* AppearanceButton.m in Sources */,
 				71CE492519F0079A0017541A /* UIResponder+Appearance.m in Sources */,

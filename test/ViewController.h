@@ -6,8 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppearanceViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : AppearanceViewController
 
 
 @end

@@ -35,19 +35,8 @@
   
   appearance_wants_update(aiview);
   
-//  [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+  appearance_wants_update(self);
 }
-
-- (void)timeout
-{
-  appearance_update(nil);
-}
-
-IMP_APPEARANCE_WILL_UPDATE_BEGIN
-IMP_APPEARANCE_WILL_UPDATE_END
-
-IMP_APPEARANCE_DID_UPDATE_BEGIN
-IMP_APPEARANCE_DID_UPDATE_END
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
