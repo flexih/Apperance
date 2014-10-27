@@ -12,7 +12,7 @@
 + (instancetype)imageWithText:(NSString *)text
 {
   //name
-  //file://
+  //file://path
   //file://path/[bundle]/path
   //http://
   //bundle://[bundle]/path

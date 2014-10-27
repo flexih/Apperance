@@ -42,8 +42,8 @@ IMP_APPEARANCE_VIEW_DID_UPDATE_BEGIN
 
 IMP_APPEARANCE_VIEW_DID_UPDATE_END
 ```
-Example
--------
+Code Sample
+-----------
 
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -56,12 +56,43 @@ Example
 ...
 
 AppearanceView *aview = [[AppearanceView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-  
 aview.appearanceConfigKeyPath = @"key1";
 [self.view addSubview:aview];
 appearance_wants_update(aview);
-
 ```
+
+JSON Configuration Sample:
+--------------------------
+
+```objective-c
+{
+  "appearance":"Theme1",
+  "key1":[
+    ["setBackgroundColor:", [{"v":"255,100,255,0.8","c":"UIColor"}]],
+    ["setTag:", [{"v":10}]]
+  ],
+  "key2":[
+    ["setFrame:", [{"v":"{{20, 30},{50, 60}}"}]],
+    ["setImage:", [{"v":"bundle://[areas.bundle]/oreo.jpg", "c":"UIImage"}]]
+  ]
+}
+```
+
+JSON Format Specifics:
+
+####UIColor
+
+- Color Integer Value, e.g. 0x00FFFFFF
+- RGB(A) String Value seperated by comma, e.g. "255,100,255,0.8"
+
+####UIImage
+
+- name
+- file://path
+- file://path/[bundle]/path
+- bundle://[bundle]/path
+- http://
+
 
 
 
