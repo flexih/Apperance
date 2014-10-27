@@ -36,9 +36,9 @@
   return self;
 }
 
-- (instancetype)initWithString:(NSString *)string
+- (instancetype)initWithString:(NSString *)jsonString
 {
-  return [self initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+  return [self initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (void)configResponder:(UIResponder *)responder

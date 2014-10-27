@@ -24,6 +24,9 @@ BOOL appearance_is_valid(UIResponder *responder);
 static inline
 BOOL appearance_should_update(UIResponder *responder);
 
+static
+void appearance_add_responder(UIResponder *responder);
+
 void appearance_initialize(void)
 {
   appearance_list = [NSPointerArray weakObjectsPointerArray];
@@ -43,7 +46,7 @@ void appearance_update(AppearanceConfig *apperanceConfig)
 
   appearance_config = apperanceConfig;  
   
-  for (long i = appearance_list.count - 1; i > -1; i--) {
+  for (long i = appearance_list.count - 1; i > -1; i--) {///TODO:stable
     UIResponder *responder = [appearance_list pointerAtIndex:i];
     
     if (appearance_should_update(responder)) {
@@ -58,15 +61,6 @@ void appearance_update(AppearanceConfig *apperanceConfig)
       }
     }
   }
-}
-
-void appearance_add_responder(UIResponder *responder)
-{
-  if (appearance_list.count > 0 && [appearance_list pointerAtIndex:appearance_list.count - 1] == NULL) {
-    [appearance_list compact];
-  }
-  
-  [appearance_list addPointer:(__bridge void *)responder];
 }
 
 void appearance_wants_update(UIResponder *responder)
@@ -116,6 +110,15 @@ void appearance_view_did_update(UIResponder *responder)
   if ([(UIView *)responder window] != nil) {
     appearance_did_update(responder);
   }
+}
+
+static void appearance_add_responder(UIResponder *responder)
+{
+  if (appearance_list.count > 0 && [appearance_list pointerAtIndex:appearance_list.count - 1] == NULL) {
+    [appearance_list compact];
+  }
+  
+  [appearance_list addPointer:(__bridge void *)responder];
 }
 
 static BOOL appearance_is_valid(UIResponder *responder)
