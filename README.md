@@ -42,7 +42,26 @@ IMP_APPEARANCE_VIEW_DID_UPDATE_BEGIN
 
 IMP_APPEARANCE_VIEW_DID_UPDATE_END
 ```
+Example
+-------
 
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Override point for customization after application launch.
+  appearance_initialize();  
+  appearance_update([AppearanceConfig configWithPath:[[NSBundle mainBundle] pathForResource:@"them1.json" ofType:nil]]);
+  return YES;
+}
+
+...
+
+AppearanceView *aview = [[AppearanceView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+  
+aview.appearanceConfigKeyPath = @"key1";
+[self.view addSubview:aview];
+appearance_wants_update(aview);
+
+```
 
 
 
