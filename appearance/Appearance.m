@@ -41,16 +41,16 @@ void appearance_update(AppearanceConfig *apperanceConfig)
   for (long i = appearance_list.count - 1; i > -1; i--) {
     UIResponder *responder = [appearance_list pointerAtIndex:i];
     
-    if (responder.apperanceWillChange != nil) {
-      responder.apperanceWillChange(appearance_config.appearance);
-    }
-    
     if (appearance_should_update(responder)) {
+      if (responder.apperanceWillChange != nil) {
+        responder.apperanceWillChange(appearance_config.appearance);
+      }
+      
       appearance_setup_config(responder);
-    }
-    
-    if (responder.apperanceDidChanged != nil) {
-      responder.apperanceDidChanged(appearance_config.appearance);
+      
+      if (responder.apperanceDidChanged != nil) {
+        responder.apperanceDidChanged(appearance_config.appearance);
+      }
     }
   }
 }
@@ -72,11 +72,11 @@ void appearance_wants_update_always(UIResponder *responder)
 void appearance_will_update(UIResponder *responder)
 {
   if (appearance_is_valid(responder)) {
-    appearance_setup_config(responder);
-    
     if (responder.apperanceWillChange != nil) {
       responder.apperanceWillChange(appearance_config.appearance);
     }
+    
+    appearance_setup_config(responder);
   }
 }
 
