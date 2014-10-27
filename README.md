@@ -79,6 +79,7 @@ JSON Configuration Sample:
 ```
 
 JSON Format Specifics:
+----------------------
 
 ####UIColor
 
