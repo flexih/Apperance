@@ -30,6 +30,7 @@
 #define IMP_APPEARANCE_VIEW_WILL_UPDATE_BEGIN                                  \
 - (void)willMoveToWindow:(UIWindow *)newWindow                                 \
 {                                                                              \
+  [super willMoveToWindow:newWindow];                                          \
   appearance_view_will_update(self, newWindow);                                \
 
 #define IMP_APPEARANCE_VIEW_WILL_UPDATE_END                                    \
@@ -38,6 +39,7 @@
 #define IMP_APPEARANCE_VIEW_DID_UPDATE_BEGIN                                   \
 - (void)didMoveToWindow                                                        \
 {                                                                              \
+  [super didMoveToWindow];                                                     \
   appearance_view_did_update(self);                                            \
 
 #define IMP_APPEARANCE_VIEW_DID_UPDATE_END                                     \
