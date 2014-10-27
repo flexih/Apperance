@@ -27,6 +27,7 @@
 		71D8E96119FA8F530000D43C /* AppearanceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E96019FA8F530000D43C /* AppearanceLabel.m */; };
 		71D8E96419FA8F890000D43C /* AppearanceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E96319FA8F890000D43C /* AppearanceImageView.m */; };
 		71D8E96719FA8FC80000D43C /* AppearanceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 71D8E96619FA8FC80000D43C /* AppearanceButton.m */; };
+		71DC63C719FE7A2C00AA207F /* them2.json in Resources */ = {isa = PBXBuildFile; fileRef = 71DC63C619FE7A2C00AA207F /* them2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		71D8E96319FA8F890000D43C /* AppearanceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceImageView.m; sourceTree = "<group>"; };
 		71D8E96519FA8FC80000D43C /* AppearanceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppearanceButton.h; sourceTree = "<group>"; };
 		71D8E96619FA8FC80000D43C /* AppearanceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppearanceButton.m; sourceTree = "<group>"; };
+		71DC63C619FE7A2C00AA207F /* them2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = them2.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				71D05CE419FD1CFA00DA31C9 /* them1.json */,
+				71DC63C619FE7A2C00AA207F /* them2.json */,
 				71D05CE619FD1F6300DA31C9 /* oreo.jpg */,
 				71D05CE219FCD14600DA31C9 /* areas.bundle */,
 				71CDD5CA19ED5668009C683C /* Info.plist */,
@@ -301,6 +304,7 @@
 				71CDD5D519ED5668009C683C /* Main.storyboard in Resources */,
 				71CDD5DA19ED5668009C683C /* LaunchScreen.xib in Resources */,
 				71D05CE319FCD14600DA31C9 /* areas.bundle in Resources */,
+				71DC63C719FE7A2C00AA207F /* them2.json in Resources */,
 				71CDD5D719ED5668009C683C /* Images.xcassets in Resources */,
 				71D05CE719FD1F6300DA31C9 /* oreo.jpg in Resources */,
 				71D05CE519FD1CFA00DA31C9 /* them1.json in Resources */,

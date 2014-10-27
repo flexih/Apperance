@@ -1,0 +1,11 @@
+{
+  "appearance":"Theme2",
+  "key1":[
+    ["setBackgroundColor:", [{"v":"0,0,255,0.8","c":"UIColor"}]],
+    ["setTag:", [{"v":10}]]
+  ],
+  "key2":[
+    ["setFrame:", [{"v":"{{20, 30},{80, 60}}"}]],
+    ["setImage:", [{"v":"bundle://[areas.bundle]/oreo.jpg", "c":"UIImage"}]]
+  ]
+}

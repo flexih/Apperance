@@ -7,6 +7,11 @@
 
 #import "Appearance.h"
 
+@interface UIResponder (AppearanceWriter)
+@property (nonatomic, strong) id appearance;
+@property (nonatomic) unsigned char appearanceState;
+@end
+
 static NSPointerArray *appearance_list;
 static AppearanceConfig *appearance_config;
 
@@ -55,18 +60,25 @@ void appearance_update(AppearanceConfig *apperanceConfig)
   }
 }
 
+void appearance_add_responder(UIResponder *responder)
+{
+  if (appearance_list.count > 0 && [appearance_list pointerAtIndex:appearance_list.count - 1] == NULL) {
+    [appearance_list compact];
+  }
+  
+  [appearance_list addPointer:(__bridge void *)responder];
+}
+
 void appearance_wants_update(UIResponder *responder)
 {
-  [appearance_list addPointer:(__bridge void *)responder];
-  [responder setValue:[NSNumber numberWithUnsignedChar:kAppearanceStateWantsUpdate]
-               forKey:NSStringFromSelector(@selector(appearanceState))];
+  appearance_add_responder(responder);
+  responder.appearanceState = kAppearanceStateWantsUpdate;
 }
 
 void appearance_wants_update_always(UIResponder *responder)
 {
-  [appearance_list addPointer:(__bridge void *)responder];
-  [responder setValue:[NSNumber numberWithUnsignedChar:kAppearanceStateWantsUpdateAlways]
-               forKey:NSStringFromSelector(@selector(appearanceState))];
+  appearance_add_responder(responder);
+  responder.appearanceState = kAppearanceStateWantsUpdateAlways;
 }
 
 void appearance_will_update(UIResponder *responder)
@@ -84,7 +96,7 @@ void appearance_did_update(UIResponder *responder)
 {
   if (appearance_is_valid(responder)) {
     id oldAppearanceKey = responder.appearance;
-    [responder setValue:appearance_config.appearance forKey:NSStringFromSelector(@selector(appearance))];
+    responder.appearance = appearance_config.appearance;
     
     if (responder.apperanceDidChanged != nil) {
       responder.apperanceDidChanged(oldAppearanceKey);
