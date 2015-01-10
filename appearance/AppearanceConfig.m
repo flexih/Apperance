@@ -144,7 +144,7 @@
         if (strcmp(type, @encode(CGRect)) == 0) {
           rect = CGRectFromString(value);
           pvalue = &rect;
-        } else if (strcmp(type, @encode(CGSize))) {
+        } else if (strcmp(type, @encode(CGSize)) == 0) {
           size = CGSizeFromString(value);
           pvalue = &size;
         }
