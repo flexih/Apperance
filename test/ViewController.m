@@ -38,6 +38,20 @@
   appearance_wants_update(self);
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+
+    NSString *themeName;
+
+    if ([self.appearance rangeOfString:@"1"].location != NSNotFound) {
+        themeName = @"them2.json";
+    } else {
+        themeName = @"them1.json";
+    }
+
+    appearance_update([AppearanceConfig configWithPath:[[NSBundle mainBundle] pathForResource:themeName ofType:nil]]);
+}
+
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.

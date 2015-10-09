@@ -40,12 +40,12 @@
   return [objc_getAssociatedObject(self, sel_getName(@selector(appearanceState))) unsignedCharValue];
 }
 
-- (void)setAppearance:(id)appearance
+- (void)setAppearance:(NSString *)appearance
 {
   objc_setAssociatedObject(self, sel_getName(@selector(appearance)), appearance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)appearance
+- (NSString *)appearance
 {
   return objc_getAssociatedObject(self, sel_getName(@selector(appearance)));
 }

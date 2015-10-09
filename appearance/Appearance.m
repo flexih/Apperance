@@ -50,15 +50,8 @@ void appearance_update(AppearanceConfig *apperanceConfig)
     UIResponder *responder = [appearance_list pointerAtIndex:i];
     
     if (appearance_should_update(responder)) {
-      if (responder.apperanceWillChange != nil) {
-        responder.apperanceWillChange(appearance_config.appearance);
-      }
-      
-      appearance_setup_config(responder);
-      
-      if (responder.apperanceDidChanged != nil) {
-        responder.apperanceDidChanged(appearance_config.appearance);
-      }
+      appearance_will_update(responder);
+      appearance_did_update(responder);
     }
   }
 }

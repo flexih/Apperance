@@ -18,6 +18,6 @@ typedef NS_ENUM(NSInteger, AppearanceState) {
 @property (nonatomic, copy) void (^apperanceWillChange)(id newAppearanceKey);
 @property (nonatomic, copy) void (^apperanceDidChanged)(id oldAppearanceKey);
 @property (nonatomic, readonly) unsigned char appearanceState;
-@property (nonatomic, strong, readonly) id appearance;
+@property (nonatomic, strong, readonly) NSString *appearance;
 
 @end
